@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', 'Nunito Sans', sans-serif;
+  }
+}
+
+/* Tactile 3D Buttons & Shimmer */
+.tactile-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s ease, background-color 0.15s ease;
+  box-shadow: 0 4px 0 #46A302;
+}
+.tactile-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #46A302;
+}
+.tactile-btn:active {
+  transform: translateY(4px) !important;
+  box-shadow: 0 0px 0 #46A302 !important;
+}
+
+/* Tactile Blue */
+.tactile-btn-blue {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s ease, background-color 0.15s ease;
+  box-shadow: 0 4px 0 #1899D6;
+}
+.tactile-btn-blue:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #1899D6;
+}
+.tactile-btn-blue:active {
+  transform: translateY(4px) !important;
+  box-shadow: 0 0px 0 #1899D6 !important;
+}
+
+/* Tactile Yellow / Gold */
+.tactile-btn-yellow {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s ease, background-color 0.15s ease;
+  box-shadow: 0 4px 0 #E5A100;
+}
+.tactile-btn-yellow:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #E5A100;
+}
+.tactile-btn-yellow:active {
+  transform: translateY(4px) !important;
+  box-shadow: 0 0px 0 #E5A100 !important;
+}
+
+/* Subtle light shimmer sweep on primary button hover */
+.tactile-btn::after, .tactile-btn-blue::after, .tactile-btn-yellow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg, 
+    rgba(255, 255, 255, 0) 20%, 
+    rgba(255, 255, 255, 0.35) 50%, 
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(25deg);
+  transition: transform 0.75s ease-in-out;
+  pointer-events: none;
+}
+.tactile-btn:hover::after, .tactile-btn-blue:hover::after, .tactile-btn-yellow:hover::after {
+  transform: translateX(380%) rotate(25deg);
+}
+
+/* Secondary 3D tactile buttons */
+.tactile-btn-secondary {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+  box-shadow: 0 3px 0 #D4D4D8;
+}
+.tactile-btn-secondary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 0 #D4D4D8, 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+.tactile-btn-secondary:active {
+  transform: translateY(3px) scale(0.99) !important;
+  box-shadow: 0 0px 0 #D4D4D8 !important;
+}
+
+/* Tactile card with extruded bottom border */
+.tactile-card {
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+  box-shadow: 0 4px 0 #E5E5E5;
+}
+.tactile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #E5E5E5, 0 12px 20px -4px rgba(0, 0, 0, 0.06);
+}
+
+/* Ken Burns Ambient Background Animation */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.04) translate(0%, 0%);
+  }
+  50% {
+    transform: scale(1.12) translate(-1.5%, -1%);
+  }
+  100% {
+    transform: scale(1.06) translate(1%, 0.8%);
+  }
+}
+.ken-burns-bg {
+  animation: kenBurns 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Spring Entrance for Modal Card */
+@keyframes cardSpringIn {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.94);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-card-spring {
+  animation: cardSpringIn 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
+}
+
+/* Staggered Element Fade & Slide Entrance */
+@keyframes itemReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal-item {
+  opacity: 0;
+  animation: itemReveal 0.5s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+}
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.22s; }
+.delay-3 { animation-delay: 0.32s; }
+.delay-4 { animation-delay: 0.42s; }
+.delay-5 { animation-delay: 0.52s; }
+.delay-6 { animation-delay: 0.62s; }
+.delay-7 { animation-delay: 0.72s; }
+
+/* Party popper playful wiggle */
+@keyframes partyWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-16deg) scale(1.25); }
+  30% { transform: rotate(14deg) scale(1.22); }
+  45% { transform: rotate(-10deg) scale(1.15); }
+  60% { transform: rotate(6deg) scale(1.1); }
+  75% { transform: rotate(0deg) scale(1); }
+}
+.animate-party-popper {
+  display: inline-block;
+  transform-origin: 70% 80%;
+  animation: partyWiggle 4.5s ease-in-out infinite;
+  cursor: pointer;
+}
+.animate-party-popper:hover {
+  animation: partyWiggle 0.8s ease-in-out infinite;
+}
+
+/* Floating confetti particles */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-420px) rotate(360deg);
+    opacity: 0;
+  }
+}
+.particle {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  animation: floatParticle linear infinite;
+}
+
+/* Accessibility: Respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns-bg,
+  .animate-card-spring,
+  .reveal-item,
+  .particle,
+  .animate-party-popper,
+  .tactile-btn,
+  .tactile-btn-blue,
+  .tactile-btn-yellow,
+  .tactile-btn-secondary {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

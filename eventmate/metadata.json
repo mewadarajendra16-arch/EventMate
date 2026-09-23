@@ -1,0 +1,6 @@
+{
+  "name": "EventMate",
+  "description": "India's #1 on-demand event crew platform for hiring verified crew and finding gig shifts with instant escrow payouts, geo-attendance, and crew reputation reviews.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
